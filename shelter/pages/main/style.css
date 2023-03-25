@@ -478,6 +478,98 @@ main {
 
 
 
+
+
+/* in-addition */
+.in-addition {
+  width: 100%;
+  background: #F6F6F6;
+}
+
+.in-addition-container {
+  padding: 80px 0px 100px 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 30px;
+}
+
+.in-addition-foto {
+  width: 505px;
+  height: 261px;
+  background: url("../../assets/png/donation-dog.png");
+}
+
+.in-addition-text {
+  width: 29.5%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.in-addition-text h3 {
+  color: #545454;
+}
+
+.bank-text {
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  /* identical to box height, or 17px */
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+
+.in-addition-text form {
+  width: 349px;
+  height: 43px;
+  padding: 10px 15px;
+  background: #F1CDB3;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.in-addition-text input {
+  width: 100%;
+  appearance: none;
+  background: none;
+  border: none;
+}
+
+.in-addition-text input::placeholder {
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  /* identical to box height, or 23px */
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+
+.credit-card {
+  width: 35px;
+  height: 23px;
+  background: url("../../assets/svg/credit-card.svg");
+}
+
+.legal-text {
+  color: #B2B2B2;
+}
+
+
+
+
+
+
+
 footer {
   width: 1280px;
 }
