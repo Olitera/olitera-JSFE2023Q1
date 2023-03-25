@@ -21,6 +21,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 p,
 h1,
 h2,
@@ -106,7 +110,6 @@ body {
   flex-direction: column;
   align-items: center;
   /* background-color: rgb(210, 194, 225); */
-  scroll-behavior: smooth;
 }
 
 header {
@@ -218,6 +221,10 @@ main {
   background: #F1CDB3;
   border-radius: 100px;
   border: #F1CDB3;
+}
+
+.not-only-text a {
+  text-decoration: none;
   color: #292929;
 }
 
@@ -568,8 +575,56 @@ main {
 
 
 
-
-
 footer {
   width: 1280px;
+  background: url("noise_lines_transparent@2X.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+}
+
+.footer-container {
+  height: 100%;
+  padding: 40px 40px 0px 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* column-gap: 160px; */
+}
+
+.question,
+.visit {
+  height: 81%;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.question {
+  width: 24%;
+}
+
+.visit {
+  width: 26%;
+}
+
+.question h3,
+.visit h3 {
+  color: #FFFFFF;
+}
+
+.mail,
+.phone,
+.boston,
+.london {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 20px;
+  text-decoration: none;
+  color: #F1CDB3;
+}
+
+.footer-dog {
+  width: 300px;
+  height: 310px;
+  background: url("../../assets/png/footer-puppy.png");
 }
