@@ -128,7 +128,18 @@ header {
   height: 100%;
 }
 
-.logo h1 {
+/* .logo h1 {
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: #F1CDB3;
+} */
+
+.logo a {
+  text-decoration: none;
   font-family: 'Georgia';
   font-style: normal;
   font-weight: 400;
@@ -137,9 +148,17 @@ header {
   /* or 35px */
   letter-spacing: 0.06em;
   color: #F1CDB3;
+  display: flex;
+  flex-direction: column;
+  transition: color 0.4s;
 }
 
-.logo p {
+.logo a:hover {
+  color: #FDDCC4;
+  transition: color 0.2s;
+}
+
+.logo-text {
   font-family: 'Arial';
   font-style: normal;
   font-weight: 400;
@@ -152,27 +171,41 @@ header {
   padding-left: 4px;
 }
 
-header nav {
+.navigation {
   display: flex;
   flex-direction: row;
-  column-gap: 36px;
+  column-gap: 14px;
 }
 
-header nav li {
-  list-style: none;
+input {
+  width: 0;
+  height: 0;
+  appearance: none;
 }
 
-header nav li a {
-  text-decoration: none;
-}
-
-.own-nav {
+.navigation a {
   color: #CDCDCD;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1px;
+  text-decoration: none;
+  transition: color 0.4s;
 }
 
-.selected-nav {
+.navigation a:hover {
   color: #FAFAFA;
+  transition: color 0.2s;
 }
+
+input:checked+label a {
+  color: #FAFAFA;
+  border-bottom: solid 3px #F1CDB3;
+}
+
+/* label a:active {
+  color: #FAFAFA;
+} */
+
 
 .selected {
   border-bottom: solid 3px #F1CDB3;
@@ -218,14 +251,17 @@ main {
   height: 52px;
   /* width: 45.2%; */
   /* padding: 15px 1px; */
-  background: #F1CDB3;
+  background-color: #F1CDB3;
   border-radius: 100px;
   border: #F1CDB3;
+  color: #292929;
+  cursor: pointer;
+  transition: background-color 0.4s;
 }
 
-.not-only-text a {
-  text-decoration: none;
-  color: #292929;
+.not-only-text button:hover {
+  background-color: #FDDCC4;
+  transition: background-color 0.2s;
 }
 
 .main-dog {
@@ -318,7 +354,19 @@ main {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  transition: background-color 0.4s;
 }
+
+.arrow-left:hover {
+  background-color: #FDDCC4;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+/* .arrow-left:disabled {
+  border: 2px solid #CDCDCD;
+} */
 
 .arrow-left-icon {
   width: 14px;
@@ -339,6 +387,14 @@ main {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+
+.arrow-right:hover {
+  background-color: #FDDCC4;
+  border: none;
+  transition: background-color 0.2s;
 }
 
 .arrow-right-icon {
@@ -355,6 +411,20 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: #FAFAFA;
+  border-radius: 9px;
+  transition: background-color 0.4s;
+}
+
+.card:hover {
+  background-color: #FFFFFF;
+  transition: background-color 0.2s;
+}
+
+.card:hover button {
+  background-color: #FDDCC4;
+  border: none;
+  transition: background-color 0.2s;
 }
 
 .card h4 {
@@ -386,18 +456,23 @@ main {
   border-radius: 100px;
   background: none;
   color: #292929;
+  transition: background-color 0.4s;
 }
 
 .rest {
   padding: 15px 45px;
-  background: #F1CDB3;
+  background-color: #F1CDB3;
   border-radius: 100px;
   border: #F1CDB3;
   color: #292929;
+  cursor: pointer;
+  transition: background-color 0.4s;
 }
 
-
-
+.rest:hover {
+  background-color: #FDDCC4;
+  transition: background-color 0.2s;
+}
 
 /* help */
 .help {
@@ -535,37 +610,36 @@ main {
 .in-addition-text form {
   width: 349px;
   height: 43px;
-  padding: 10px 15px;
+  padding: 10px 12px;
   background: #F1CDB3;
   border-radius: 9px;
+}
+
+.in-addition-text a {
+  width: 100%;
+  text-decoration: none;
+  color: #545454;
   display: flex;
   flex-direction: row;
-  column-gap: 10px;
+  align-items: center;
+  column-gap: 12px
 }
 
-.in-addition-text input {
-  width: 100%;
-  appearance: none;
-  background: none;
-  border: none;
-}
-
-.in-addition-text input::placeholder {
+/* .in-addition-text input::placeholder {
   font-family: 'Georgia';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 115%;
-  /* identical to box height, or 23px */
   letter-spacing: 0.06em;
   color: #545454;
-}
+} */
 
-.credit-card {
+/* .credit-card {
   width: 35px;
   height: 23px;
   background: url("../../assets/svg/credit-card.svg");
-}
+} */
 
 .legal-text {
   color: #B2B2B2;
