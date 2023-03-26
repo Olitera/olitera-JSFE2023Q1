@@ -213,16 +213,20 @@ input:checked+label a {
 
 
 main {
-  width: 1280px;
+  width: 100%;
 }
 
 .not-only {
   width: 100%;
-  background: url("../../assets/png/start-screen-gradient-background.png")
+  background: url("../../assets/png/noise_transparent@2x.png"), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .not-only-container {
-  width: 100%;
+  width: 1280px;
   padding: 180px 40px 0px 40px;
   display: flex;
   flex-direction: row;
@@ -276,9 +280,13 @@ main {
 /* about */
 .about {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .about-container {
+  width: 1280px;
   padding: 80px 40px 100px 40px;
   display: flex;
   flex-direction: row;
@@ -314,9 +322,13 @@ main {
 .our-friends {
   width: 100%;
   background: #F6F6F6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .our-friends-container {
+  width: 1280px;
   padding: 80px 40px 100px 40px;
   display: flex;
   flex-direction: column;
@@ -417,6 +429,7 @@ main {
 }
 
 .card:hover {
+  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
   background-color: #FFFFFF;
   transition: background-color 0.2s;
 }
@@ -477,9 +490,13 @@ main {
 /* help */
 .help {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .help-container {
+  width: 1280px;
   padding: 80px 40px 100px 40px;
   display: flex;
   flex-direction: column;
@@ -566,9 +583,13 @@ main {
 .in-addition {
   width: 100%;
   background: #F6F6F6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .in-addition-container {
+  width: 1280px;
   padding: 80px 0px 100px 0px;
   display: flex;
   flex-direction: row;
@@ -613,6 +634,12 @@ main {
   padding: 10px 12px;
   background: #F1CDB3;
   border-radius: 9px;
+  transition: background-color 0.4s;
+}
+
+.in-addition-text form:hover {
+  background: #FDDCC4;
+  transition: background-color 0.2s;
 }
 
 .in-addition-text a {
@@ -650,11 +677,15 @@ main {
 
 
 footer {
-  width: 1280px;
-  background: url("noise_lines_transparent@2X.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+  width: 100%;
+  background: url("../../assets/png/noise_transparent@2x.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer-container {
+  width: 1280px;
   height: 100%;
   padding: 40px 40px 0px 40px;
   display: flex;
@@ -695,6 +726,15 @@ footer {
   column-gap: 20px;
   text-decoration: none;
   color: #F1CDB3;
+  transition: background-color 0.4s;
+}
+
+.mail:hover,
+.phone:hover,
+.boston:hover,
+.london:hover {
+  color: #f5e2d5;
+  transition: background-color 0.2s;
 }
 
 .footer-dog {
