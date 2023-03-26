@@ -361,11 +361,13 @@ main {
   left: 0;
   border: 2px solid #F1CDB3;
   border-radius: 100px;
-  background: none;
-  display: flex;
+  background: url("../../assets/svg/left.svg") no-repeat;
+  background-position: center;
+  /* background: none; */
+  /* display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   cursor: pointer;
   transition: background-color 0.4s;
 }
@@ -380,11 +382,11 @@ main {
   border: 2px solid #CDCDCD;
 } */
 
-.arrow-left-icon {
+/* .arrow-left-icon {
   width: 14px;
   height: 6px;
   background: url("../../assets/svg/left.svg");
-}
+} */
 
 .arrow-right {
   width: 52px;
@@ -393,12 +395,13 @@ main {
   top: 44%;
   right: 0;
   border: 2px solid #F1CDB3;
-  background: none;
+  background: url("../../assets/svg/right.svg") no-repeat;
+  background-position: center;
   border-radius: 100px;
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   cursor: pointer;
   transition: background-color 0.4s;
 }
@@ -409,11 +412,11 @@ main {
   transition: background-color 0.2s;
 }
 
-.arrow-right-icon {
+/* .arrow-right-icon {
   width: 14px;
   height: 6px;
   background: url("../../assets/svg/right.svg");
-}
+} */
 
 .card {
   width: 270px;
