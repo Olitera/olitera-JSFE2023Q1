@@ -189,10 +189,12 @@ input {
 input:checked + label {
   color: #FAFAFA;
   border-bottom: solid 3px #F1CDB3;
+  cursor: default;
 }
 
 input:checked + label a {
   color: #FAFAFA;
+  cursor: default;
 }
 
 label:active {

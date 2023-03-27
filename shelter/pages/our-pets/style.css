@@ -187,10 +187,12 @@ input {
 input:checked + label {
   color: #292929;
   border-bottom: solid 3px #F1CDB3;
+  cursor: default;
 }
 
 input:checked + label a {
   color: #292929;
+  cursor:default;
 }
 
 label:active {
@@ -339,12 +341,11 @@ main {
 
 .button-container button {
   cursor: pointer;
-}
-
-.dobl-arrow-left,
-.arrow-left {
   width: 52px;
   height: 52px;
+}
+
+.button-container button:disabled {
   border: 2px solid #CDCDCD;
   border-radius: 100px;
   background: none;
@@ -352,8 +353,6 @@ main {
 }
 
 .number {
-  width: 52px;
-  height: 52px;
   background-color: #F1CDB3;
   border-radius: 100px;
   border: none;
@@ -371,10 +370,10 @@ main {
   transition: background-color 0.2s;
 }
 
+.dobl-arrow-left,
+.arrow-left,
 .arrow-right,
 .dowl-arrow-right {
-  width: 52px;
-  height: 52px;
   border: 2px solid #F1CDB3;
   border-radius: 100px;
   background: none;
@@ -382,10 +381,21 @@ main {
   transition: background-color 0.4s;
 }
 
+.dobl-arrow-left:hover,
+.arrow-left:hover,
 .arrow-right:hover,
 .dowl-arrow-right:hover {
   border: none;
   background-color: #FDDCC4;
+  transition: background-color 0.2s;
+}
+
+.dobl-arrow-left:active,
+.arrow-left:active,
+.arrow-right:active,
+.dowl-arrow-right:active {
+  border: none;
+  background-color:  #F1CDB3;
   transition: background-color 0.2s;
 }
 
