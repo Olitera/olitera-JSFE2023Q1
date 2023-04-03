@@ -186,15 +186,15 @@ input {
   transition: color 0.2s;
 }
 
-input:checked + label {
+input:checked+label {
   color: #292929;
   border-bottom: solid 3px #F1CDB3;
   cursor: default;
 }
 
-input:checked + label a {
+input:checked+label a {
   color: #292929;
-  cursor:default;
+  cursor: default;
 }
 
 label:active {
@@ -216,7 +216,7 @@ label:active {
   display: none;
   width: 30px;
   height: 22px;
-  background: url("../../assets/svg/Burger.svg");
+  background: url("../../assets/svg/burger-black.svg");
   /* position: absolute; */
 }
 
@@ -404,7 +404,7 @@ main {
 .arrow-right:active,
 .dowl-arrow-right:active {
   border: none;
-  background-color:  #F1CDB3;
+  background-color: #F1CDB3;
   transition: background-color 0.2s;
 }
 
@@ -523,11 +523,26 @@ footer {
 
 @media (max-width: 768px) {
   header {
-    padding: 0px 29px;
+    padding: 30px 29px;
   }
 
   h1 {
     padding-left: 1px;
+  }
+
+  .our-friends-container {
+    padding: 80px 40px 77px 40px;
+    row-gap: 13px;
+  }
+
+  .card-container {
+    height: 1365px;
+    padding: 15px 54px;
+    overflow: hidden;
+  }
+
+  .button-container {
+    padding-top: 42px;
   }
 
   .footer-container {
@@ -555,7 +570,23 @@ footer {
 
 @media (max-width: 520px) {
   header {
-    padding: 1px 19px;
+    padding: 30px 19px;
+  }
+
+  .header-3 {
+    font-size: 25px;
+  }
+
+  .our-friends-container {
+    padding: 42px 10px 43px 10px;
+  }
+
+  .card-container {
+    padding: 28px 15px;
+  }
+  .button-container {
+    padding-top: 57px;
+    column-gap: 10px;
   }
 
   .footer-container {
@@ -582,7 +613,8 @@ footer {
     row-gap: 39px;
   }
 
-  .question h3, .visit h3 {
+  .question h3,
+  .visit h3 {
     text-align: center;
   }
 
