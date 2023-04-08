@@ -36,7 +36,7 @@ for (let i = 0; i < optionCardTextArray.length; i++) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  if(!!location.href.match(/#help/)) {
+  if (!!location.href.match(/#help/)) {
     helpInput.checked = true;
   }
 })
@@ -60,19 +60,27 @@ function closeMenu() {
 
 menu.addEventListener('click', closeMenu);
 
-// function newLog() {
-//   login.style.transform = 'translate(-100vw)';
-// }
-
-// logBut.addEventListener('click', newLog);
-// account.addEventListener('click', newLog);
-
-// function closeLog(event) {
-//   if (event.target === login) {
-//     login.style.transform = '';
-//   }
-// }
-
-// login.addEventListener('click', (event) => closeLog(event));
-
 const card = document.querySelector('.card');
+const modal = document.querySelector('.pets-modal');
+const modalClose = document.querySelector('.modal-close');
+
+function openModal() {
+  modal.style.transform = 'translate(0vw)';
+}
+
+card.addEventListener('click', openModal);
+
+function closeMod() {
+  modal.style.transform = '';
+}
+
+modalClose.addEventListener('click', closeMod);
+
+function closeModal(event) {
+  if (event.target === modal) {
+    modal.style.transform = '';
+  }
+}
+
+modal.addEventListener('click', (event) => closeModal(event));
+
