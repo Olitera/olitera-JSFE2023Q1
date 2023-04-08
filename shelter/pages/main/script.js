@@ -42,17 +42,20 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 
-const menu = document.querySelector('.burger-menu');
+const menu = document.querySelector('.burger-menu-form');
 const burger = document.querySelector('.burger');
 
 function newMenu() {
-  menu.style.transform = 'translateX(0px)';
+  menu.style.transform = 'translate(0vw)';
+  burger.style.transform = 'rotate(90deg)';
 }
 
 burger.addEventListener('click', newMenu);
 
 function closeMenu() {
+
   menu.style.transform = '';
+  burger.style.transform = 'rotate(0deg)';
 }
 
 menu.addEventListener('click', closeMenu);
@@ -72,4 +75,4 @@ menu.addEventListener('click', closeMenu);
 
 // login.addEventListener('click', (event) => closeLog(event));
 
-
+const card = document.querySelector('.card');
