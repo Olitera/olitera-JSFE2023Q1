@@ -392,7 +392,7 @@ main {
   border-radius: 9px 9px 0px 0px;
 }
 
-.card-1 .card-foto {
+/* .card-1 .card-foto {
   background-image: url('../../assets/png/pets-katrine.png');
 }
 
@@ -422,7 +422,7 @@ main {
 
 .card-8 .card-foto {
   background-image: url('../../assets/png/pets-freddie.png');
-}
+} */
 
 .pets-modal {
   width: 100vw;
@@ -481,7 +481,7 @@ main {
   height: 500px;
   border-radius: 9px 0px 0px 9px;
   background-size: contain;
-  background: no-repeat;
+  /* background: no-repeat; */
 }
 
 .modal-text {
@@ -610,7 +610,7 @@ main {
 .dobl-arrow-left,
 .arrow-left,
 .arrow-right,
-.dowl-arrow-right {
+.dobl-arrow-right {
   border: 2px solid #F1CDB3;
   border-radius: 100px;
   background: none;
@@ -621,7 +621,7 @@ main {
 .dobl-arrow-left:hover,
 .arrow-left:hover,
 .arrow-right:hover,
-.dowl-arrow-right:hover {
+.dobl-arrow-right:hover {
   border: none;
   background-color: #FDDCC4;
   transition: background-color 0.2s;
@@ -630,7 +630,7 @@ main {
 .dobl-arrow-left:active,
 .arrow-left:active,
 .arrow-right:active,
-.dowl-arrow-right:active {
+.dobl-arrow-right:active {
   border: none;
   background-color: #F1CDB3;
   transition: background-color 0.2s;

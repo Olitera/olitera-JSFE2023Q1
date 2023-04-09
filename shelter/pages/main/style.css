@@ -593,7 +593,7 @@ main {
   height: 500px;
   border-radius: 9px 0px 0px 9px;
   background-size: contain;
-  background: no-repeat;
+  /* background: no-repeat; */
 }
 
 .modal-text {
