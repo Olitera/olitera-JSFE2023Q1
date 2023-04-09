@@ -249,7 +249,7 @@ input {
 .burger-menu {
   /* display: none; */
   width: 320px;
-  height: 823px;
+  height: 100%;
   background: #292929;
   position: absolute;
   right: 0px;
@@ -429,14 +429,16 @@ main {
 .slider {
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .slider-inner {
-  width: 100%;
+  width: 247%;
+  height: 435px;
   padding: 0 8.7%;
   display: flex;
   flex-direction: row;
-  column-gap: 9%;
+  column-gap: 3.3%;
 }
 
 .arrow-left {
@@ -488,7 +490,7 @@ main {
   /* height: 435px; */
   width: 30%;
   aspect-ratio: 270/435;
-  padding-bottom: 3.2%;
+  padding-bottom: 1.1%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -520,20 +522,6 @@ main {
   aspect-ratio: 270/270;
   /* height: 270px; */
   border-radius: 9px 9px 0px 0px;
-}
-
-.card-1 .card-foto {
-  background-image: url('../../assets/png/pets-katrine.png');
-  background-size: cover;
-}
-
-.card-2 .card-foto {
-  background-image: url('../../assets/png/pets-jennifer.png');
-  background-size: cover;
-}
-
-.card-3 .card-foto {
-  background-image: url('../../assets/png/pets-woody.png');
   background-size: cover;
 }
 
@@ -547,6 +535,10 @@ main {
   transition: background-color 0.4s;
   cursor: pointer;
 }
+
+/* body .pets-modal {
+  overflow: hidden;
+} */
 
 .pets-modal {
   width: 100vw;
