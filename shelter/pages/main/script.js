@@ -30,19 +30,22 @@ for (let i = 0; i < optionCardTextArray.length; i++) {
 }
 
 
-// cards constrictor from json in slider
+// cards constructor from json in slider and modal constructor
 const containerDiv = document.querySelector('.slider-inner');
+const modal = document.querySelector('.pets-modal');
+const modalInner = document.querySelector('.pets-modal-inner');
+const modalClose = document.querySelector('.modal-close');
+
 
 const cardInner = `<div class="card-foto"></div>
 <h4 class="header-4"></h4>
 <button class="button">Learn more</button>`;
 
-fetch('https://raw.githubusercontent.com/rolling-scopes-school/olitera-JSFE2023Q1/shelter-part3/shelter/pages/pets.json?token=GHSAT0AAAAAAB7NUPOIPREQ4HD27UDSYSIUZBSPVSA')
+fetch('https://raw.githubusercontent.com/rolling-scopes-school/olitera-JSFE2023Q1/shelter-part3/shelter/pages/pets.json?token=GHSAT0AAAAAAB7NUPOIKOLFMAEXMSMUFWP6ZBS4GIQ')
 .then(response => response.json())
 .then ((data)=> {
-  console.log(data[0].name)
+  //cards constructor from json 
   for (let i = 0; i < data.length; i++) {
-    // console.log(data[i]);
     const cardElement = document.createElement('div');
     cardElement.className = `card`;
     cardElement.innerHTML = cardInner;
@@ -51,16 +54,33 @@ fetch('https://raw.githubusercontent.com/rolling-scopes-school/olitera-JSFE2023Q
     const fotoElement = cardElement.querySelector('.card-foto');
     fotoElement.style.backgroundImage = `url('${data[i].img}')`;
     containerDiv.append(cardElement);
-    cardElement.addEventListener('click', openModal);
+    cardElement.addEventListener('click', () => openModal(data[i]));
   }
+  
 })
 
 
+function openModal(modalData) {
+  const image = document.querySelector('.modal-foto');
+  const namePet = document.querySelector('.pet-name');
+  const kind = document.querySelector('.kind');
+  const breed = document.querySelector('.breed');
+  const description = document.querySelector('.pet-description');
+  const age = document.querySelector('.age');
+  const inoculation = document.querySelector('.inoculations');
+  const disease = document.querySelector('.diseases');
+  const parasite = document.querySelector('.parasites');
 
-const modal = document.querySelector('.pets-modal');
-const modalClose = document.querySelector('.modal-close');
+  image.style.backgroundImage = `url('${modalData.img}')`;
+  namePet.innerText = modalData.name;
+  kind.innerText = modalData.type;
+  breed.innerText = modalData.breed;
+  description.innerText = modalData.description;
+  age.innerText = modalData.age;
+  inoculation.innerText = modalData.inoculations;
+  disease.innerText = modalData.diseases;
+  parasite.innerText = modalData.parasites;
 
-function openModal() {
   modal.style.transform = 'translate(0vw)';
   body.style.overflow = "hidden";
 }

@@ -34,7 +34,34 @@
       <input type="radio" name="groop" id="contacts" onchange="location.href='#footer'">
       <label for="contacts" class="subheading label-text">Contacts</label>
     </div>
-    <div class="burger"></div>
+    <div class="burger">
+      <div class="burger-linea"></div>
+      <div class="burger-linea"></div>
+      <div class="burger-linea"></div>
+    </div>
+    <div class="burger-menu-form">
+      <div class="burger-menu">
+        <div class="menu-container">
+          <input type="radio" name="groop-burger" id="about-burger">
+          <label for="about-burger">
+            <a href="../main/index.html" class="burger-text">About the shelter</a>
+          </label>
+
+          <input type="radio" name="groop-burger" id="pets-burger" checked="checked">
+          <label for="pets-burger">
+            <a href="" class="burger-text">Our pets</a>
+          </label>
+
+          <input type="radio" name="groop-burger" id="help-shelter-burger">
+          <label for="help-shelter-burger">
+            <a href="../main/index.html#help" class="burger-text burger-label-text">Help the shelter</a>
+          </label>
+
+          <input type="radio" name="groop-burger" id="contacts-burger" onchange="location.href='#footer'">
+          <label for="contacts-burger" class="burger-text burger-label-text">Contacts</label>
+        </div>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -50,6 +77,53 @@
           <button class="number header-4">1</button>
           <button class="arrow-right header-4">&gt;</button>
           <button class="dowl-arrow-right header-4">&gt;&gt;</button>
+        </div>
+        <div class="pets-modal">
+          <button class="modal-close"></button>
+          <div class="pets-modal-inner">
+            <div class="modal-foto"></div>
+            <div class="modal-text">
+              <div class="pet-main">
+                <h3 class="header-3 pet-name"></h3>
+                <div class="pet-breed">
+                  <h4 class="header-4 kind"></h4>
+                  <p class="header-4">-</p>
+                  <h4 class="header-4 breed"></h4>
+                </div>
+              </div>
+              <h5 class="pet-description"></h5>
+              <ul class="pet-option">
+                <li>
+                  <div class="dot"></div>
+                  <div class="pet-option-text">
+                    <p class="option-text">Age:</p>
+                    <p class="option-text-light age"></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="dot"></div>
+                  <div class="pet-option-text">
+                    <p class="option-text">Inoculations:</p>
+                    <p class="option-text-light inoculations"></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="dot"></div>
+                  <div class="pet-option-text">
+                    <p class="option-text">Diseases:</p>
+                    <p class="option-text-light diseases"></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="dot"></div>
+                  <div class="pet-option-text">
+                    <p class="option-text">Parasites:</p>
+                    <p class="option-text-light parasites"></p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>

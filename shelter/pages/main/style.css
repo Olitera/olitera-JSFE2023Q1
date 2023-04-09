@@ -29,7 +29,8 @@ p,
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5 {
   margin-block-start: 0;
   margin-block-end: 0;
 }
@@ -219,7 +220,6 @@ input {
   display: none;
   width: 30px;
   height: 22px;
-  /* background: url("../../assets/svg/burger-but.svg"); */
   flex-direction: column;
   justify-content: space-between;
   position: absolute;
@@ -536,10 +536,6 @@ main {
   cursor: pointer;
 }
 
-/* body .pets-modal {
-  overflow: hidden;
-} */
-
 .pets-modal {
   width: 100vw;
   height: 100vh;
@@ -576,7 +572,8 @@ main {
 }
 
 .modal-close:active {
-  background-color: #F1CDB3;;
+  background-color: #F1CDB3;
+  ;
   border: none;
   transition: background-color 0.2s;
 }
@@ -584,9 +581,105 @@ main {
 .pets-modal-inner {
   width: 70.5%;
   height: 500px;
+  display: flex;
+  flex-direction: row;
   background: #FAFAFA;
   border-radius: 9px;
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+}
+
+.modal-foto {
+  width: 500px;
+  height: 500px;
+  border-radius: 9px 0px 0px 9px;
+  background-size: contain;
+  background: no-repeat;
+}
+
+.modal-text {
+  width: 401px;
+  /* height: 362px; */
+  padding: 49px 20px 90px 31px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pet-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 8px;
+}
+
+.pet-breed {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 6px;
+}
+
+.pet-description {
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  /* or 17px */
+  letter-spacing: 0.06em;
+  color: #000000;
+}
+
+.pet-option {
+  display: flex;
+  flex-direction: column;
+  row-gap: 11px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+.pet-option-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.option-text {
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 110%;
+  /* identical to box height, or 17px */
+  letter-spacing: 0.06em;
+  color: #000000;
+}
+
+.option-text-light {
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  /* identical to box height, or 17px */
+  letter-spacing: 0.06em;
+  color: #000000;
+}
+
+.pet-option li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 4px;
+  background: #F1CDB3;
 }
 
 .rest {
