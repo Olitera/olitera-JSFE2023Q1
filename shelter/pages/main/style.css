@@ -437,10 +437,26 @@ main {
 .slider-inner {
   width: 100%;
   height: 435px;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* column-gap: 9.1%;  */
+  overflow: hidden;
+}
+
+.cards-container-outer {
+  height: 100%;
   display: flex;
   flex-direction: row;
-  column-gap: 9.1%;
-  overflow: hidden;
+  column-gap: 90px;
+  position: relative;
+}
+
+.cards-container {
+  /* width: 100%; */
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  column-gap: 90px;
 }
 
 .arrow-left {

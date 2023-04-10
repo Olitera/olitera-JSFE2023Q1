@@ -31,13 +31,28 @@ for (let i = 0; i < optionCardTextArray.length; i++) {
 
 
 // cards constructor from json in slider and modal constructor
-const containerDiv = document.querySelector('.slider-inner');
+const containerDiv = document.querySelector('.cards-container');
 const modal = document.querySelector('.pets-modal');
 const modalInner = document.querySelector('.pets-modal-inner');
 const modalClose = document.querySelector('.modal-close');
 const arrowLeft = document.querySelector('.arrow-left');
 const arrowRight = document.querySelector('.arrow-right');
+const sliderInner = document.querySelector('.slider-inner'); 
+const slider = document.querySelector('.slider');
+const cardsOuter = document.querySelector('.cards-container-outer');
 
+let sortArray;
+let count = 1;
+let columnGap = '90px';
+// let currentPosition = '0px';
+let currentPosition = 0;
+let leftPosition = 0;
+let slidesCount = 6;
+let currentArray;
+let prevArray;
+let experimentalData = Array(8).fill(0).map((el, i) => i + 1);
+let isBackClicked = false;
+let isNextClicked = false;
 
 const cardInner = `<div class="card-foto"></div>
 <h4 class="header-4"></h4>
@@ -47,19 +62,133 @@ fetch('../pets.json')
 .then(response => response.json())
 .then ((data)=> {
   //cards constructor from json 
-  for (let i = 0; i < data.length; i++) {
+
+  sortArray = data.sort(() => Math.random() - 0.5);
+  // ortArray.length = slidesCount;
+  currentArray = createNextArray();
+  console.log(currentArray);
+
+
+  for (let i = 0; i < sortArray.length; i++) {
     const cardElement = document.createElement('div');
     cardElement.className = `card`;
     cardElement.innerHTML = cardInner;
     const textElement = cardElement.querySelector('.header-4');
-    textElement.innerHTML = data[i].name;
+    textElement.innerHTML = sortArray[i].name;
     const fotoElement = cardElement.querySelector('.card-foto');
-    fotoElement.style.backgroundImage = `url('${data[i].img}')`;
+    fotoElement.style.backgroundImage = `url('${sortArray[i].img}')`;
     containerDiv.append(cardElement);
-    cardElement.addEventListener('click', () => openModal(data[i]));
+    cardElement.addEventListener('click', () => openModal(sortArray[i]));
   }
+
+  cloneCard(containerDiv);
+  console.log(`${-containerDiv.clientWidth}px + ${columnGap}`);
+  leftPosition = -2070 - 90;
+  cardsOuter.style.left = `${(leftPosition)}px`;
+  // cardsOuter.style.left = `calc(${-containerDiv.clientWidth}px - ${columnGap})`;
+  
   
 })
+
+
+
+function createNextArray() {
+  let arr = [];
+  if (!!currentArray) {
+    experimentalData.forEach(el => {
+      if (!currentArray.includes(el)){
+      arr.push(el);
+      }
+    });
+    arr.sort(() => Math.random() - 0.5);
+    
+  } else {
+    arr = experimentalData.map(el=>el).sort(() => Math.random() - 0.5);
+  }
+  arr.length = 3;  
+  return arr;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function cloneCard(container) {
+  const cloneItem = container.cloneNode(true);
+  cardsOuter.appendChild(cloneItem);
+  // const cloneItem2 = container.cloneNode(true);
+  // container.before(cloneItem2);
+}
+
+function prevSlide() {
+  currentPosition = `calc(${currentPosition} + 100% + ${columnGap})`;
+  cardsOuter.style.translate = currentPosition;
+  // if (count < 2) {
+  //   count ++;
+  //   cardsOuter.style.left = `calc(${-containerDiv.clientWidth}px - ${columnGap})`;
+
+  // }
+
+console.log(isNextClicked, 'next')
+  //todo: remove
+if(!isNextClicked) {
+  prevArray = currentArray;
+  currentArray = createNextArray();
+  
+} else {
+  isNextClicked = false;
+  let state = currentArray.map(el => el);
+    currentArray = prevArray.map(el => el);
+    prevArray = state;
+}
+isBackClicked = true;
+  // currentArray = createNextArray();
+  console.log(prevArray, currentArray)
+}
+
+arrowRight.addEventListener('click', nextSlide);
+
+// count = 1;
+function nextSlide() {
+  // cardsOuter.style.transform = 'translate(-100% + 90px)';
+  // currentPosition = `calc(${currentPosition} - 100% - ${columnGap})`;
+  currentPosition = currentPosition - 991 - 90;
+
+  cardsOuter.style.translate = `${currentPosition}px`;
+  count ++;
+  console.log(count);
+  if (count  === 2) {
+    count = 0;
+    leftPosition = leftPosition - currentPosition + 991 + 90;
+    cardsOuter.style.left = `${leftPosition}px`;
+    // cardsOuter.style.left = `calc(${cardsOuter.style.left} - ${currentPosition})`;
+  }
+
+//todo: remove
+if(!isBackClicked) {
+  prevArray = currentArray;
+  currentArray = createNextArray();
+
+} else {
+  let state = currentArray.map(el => el);
+  currentArray = prevArray.map(el => el);
+  prevArray = state;
+  isBackClicked = false;
+}
+isNextClicked = true;
+console.log(prevArray, currentArray)
+}
+
+arrowLeft.addEventListener('click', prevSlide);
 
 
 function openModal(modalData) {
