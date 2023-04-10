@@ -223,6 +223,7 @@ label:active {
   right: 20px;
   z-index: 2;
   transition: transform 0.5s;
+  cursor: pointer;
 }
 
 .burger-linea {
@@ -234,12 +235,12 @@ label:active {
 .burger-menu-form {
   width: 100vw;
   height: 100vh;
+  display: none;
   background: #262425cc;
   position: fixed;
   top: 0px;
-  right: 0px;
+  right: -100vw;
   z-index: 1;
-  transform: translate(100vw);
   transition: transform 1.5s;
 }
 
@@ -430,12 +431,11 @@ main {
   background: rgba(41, 41, 41, 0.6);
   position: fixed;
   top: 0px;
-  right: 0px;
+  right: -100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   /* z-index: 1; */
-  transform: translate(100vw);
   transition: transform 1.5s;
 }
 
@@ -797,6 +797,10 @@ footer {
 
   .burger {
     display: flex;
+  }
+
+  .burger-menu-form {
+    display: block;
   }
 
   .footer-container {

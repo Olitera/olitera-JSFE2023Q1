@@ -6,10 +6,46 @@ const modal = document.querySelector('.pets-modal');
 const modalInner = document.querySelector('.pets-modal-inner');
 const modalClose = document.querySelector('.modal-close');
 const arrowRight = document.querySelector('.arrow-right');
+
 const doblArrowRight = document.querySelector('.dobl-arrow-right');
 const arrowLeft = document.querySelector('.arrow-left');
 const doblArrowLeft = document.querySelector('.dobl-arrow-left');
 const number = document.querySelector('.number'); 
+
+
+const menu = document.querySelector('.burger-menu-form');
+const burger = document.querySelector('.burger');
+const burgerLinea = document.querySelectorAll('.burger-linea');
+let menuStatus = 'close';
+
+
+function newMenu() {
+  menu.style.transform = 'translate(-100vw)';
+  burger.style.transform = 'rotate(90deg)';
+  burgerLinea.forEach((el)=> el.style.border = '1px solid #F1CDB3');
+  body.style.overflow = 'hidden';
+  menuStatus = 'open';
+}
+
+function closeMenu() {
+  menu.style.transform = '';
+  burger.style.transform = 'rotate(0deg)';
+  burgerLinea.forEach((el)=> el.style.border = '1px solid #000000');
+  body.style.overflow = '';
+  menuStatus = 'close';
+}
+
+burger.addEventListener('click',()=> {
+  if(menuStatus === 'close') {
+    newMenu()
+  }
+  else {
+    closeMenu()
+  }
+});
+
+menu.addEventListener('click', closeMenu);
+
 
 const cardInner = `<div class="card-foto"></div>
 <h4 class="header-4"></h4>
@@ -17,19 +53,20 @@ const cardInner = `<div class="card-foto"></div>
 
 let globalArray = [];
 let dataFromJson = [];
+let currentPage = 1;
+let currentScreenSize;
 
 fetch('../pets.json')
 .then(response => response.json())
 .then ((data)=> {
   dataFromJson = data;
-  checkArray(data);
+   checkArray(data);
 
-  createCards(data);
+  createCards(globalArray[0]);
   
 
-  console.log(createLargeArr(data))
+  // console.log(createLargeArr(data))
 })
-
 
 function createCards(data) {
   for (let i = 0; i < data.length; i++) {
@@ -66,7 +103,7 @@ function openModal(modalData) {
   disease.innerText = modalData.diseases;
   parasite.innerText = modalData.parasites;
 
-  modal.style.transform = 'translate(0vw)';
+  modal.style.transform = 'translate(-100vw)';
   body.style.overflow = "hidden";
 }
 
@@ -86,66 +123,6 @@ function closeModal(event) {
 
 modal.addEventListener('click', (event) => closeModal(event));
 
-
-const menu = document.querySelector('.burger-menu-form');
-const burger = document.querySelector('.burger');
-const burgerLinea = document.querySelector('.burger-linea');
-
-function newMenu() {
-  menu.style.transform = 'translate(0vw)';
-  burger.style.transform = 'rotate(90deg)';
-  burgerLinea.style.border = '1px solid #F1CDB3';
-  body.style.overflow = 'hidden';
-}
-
-burger.addEventListener('click', newMenu);
-
-function closeMenu() {
-  menu.style.transform = '';
-  burger.style.transform = 'rotate(0deg)';
-  burgerLinea.style.border = '1px solid #000000';
-  body.style.overflow = '';
-}
-
-menu.addEventListener('click', closeMenu);
-
-
-let currentPage = 1;
-// let count = 48;
-// let cnt = 8;
-// let cnt_page = Math.ceil(count / cnt)
-
-// function displayCards(pagData, pagCnt, page) {
-//   const start = pagCnt * page  ;
-//   const end = start + pagCnt;
-//   const elementData = pagData.slice(start,end);
-
-// }
-
-
-function createLargeArr(arr) {
-  const matrix = Array(6).fill(arr);
-  return matrix.map((el) => 
-    el.sort(() => Math.random() - 0.5)    
-  )
-
-}
-
-function createMediumArr(arr) {
-  const matrix = Array(8).fill(arr);
-  return matrix.map((el) => 
-    el.sort(() => Math.random() - 0.5)    
-  )
-
-}
-
-function createSmallArr(arr) {
-  const matrix = Array(16).fill(arr);
-  return matrix.map((el) => 
-    el.sort(() => Math.random() - 0.5)    
-  )
-
-}
 
 function onNextClick() {
   if (currentPage < globalArray.length) {
@@ -210,20 +187,55 @@ function checkDisabled() {
     arrowLeft.disabled = false;
     doblArrowLeft.disabled = false;
   }
-
 }
 
 checkDisabled();
 
+
+function createLargeArr(arr) {
+  const matrix = Array(6).fill(arr);
+  return matrix.map((el) => 
+    el.map(e => e).sort(() => Math.random() - 0.5)   
+  )
+
+}
+
+function createMediumArr(arr) {
+  const matrix = Array(8).fill(arr);
+  return matrix.map((el) => 
+    el.map(e => e).sort(() => Math.random() - 0.5)    
+  )
+
+}
+
+function createSmallArr(arr) {
+  const matrix = Array(16).fill(arr);
+  return matrix.map((el) => 
+    el.map(e => e).sort(() => Math.random() - 0.5)    
+  )
+
+}
+
 function checkArray(data) {
-  if(window.innerWidth >= '1279') {
+  // console.log(data, window.innerWidth)
+  if(window.innerWidth >= '1279' && currentScreenSize !== 'large') {
+    currentScreenSize = 'large';
+    // console.log(currentScreenSize);
     globalArray = createLargeArr(data);
-  } else if (window.innerWidth < '1279' && window.innerWidth >= '948') {
-    // console.log(data)
+    // console.log(globalArray)
+  } else if (window.innerWidth < '1279' && window.innerWidth >= '768' & currentScreenSize !== 'medium') {
+    currentScreenSize = 'medium';
+    // console.log(currentScreenSize)
     globalArray = createMediumArr(data);
-  } else {
+    console.log(globalArray)
+  } else if (window.innerWidth < '767' && currentScreenSize !== 'small') {
+    currentScreenSize = 'small';
+    // console.log(currentScreenSize)
     globalArray = createSmallArr(data);
+    // console.log(globalArray)
   }
+  // console.log(window.innerWidth >= '1279' && currentScreenSize !== 'large', globalArray, currentScreenSize)
+  return globalArray;
 }
 
 window.addEventListener('resize', ()=>{

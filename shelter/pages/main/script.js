@@ -35,13 +35,15 @@ const containerDiv = document.querySelector('.slider-inner');
 const modal = document.querySelector('.pets-modal');
 const modalInner = document.querySelector('.pets-modal-inner');
 const modalClose = document.querySelector('.modal-close');
+const arrowLeft = document.querySelector('.arrow-left');
+const arrowRight = document.querySelector('.arrow-right');
 
 
 const cardInner = `<div class="card-foto"></div>
 <h4 class="header-4"></h4>
 <button class="button">Learn more</button>`;
 
-fetch('https://raw.githubusercontent.com/rolling-scopes-school/olitera-JSFE2023Q1/shelter-part3/shelter/pages/pets.json?token=GHSAT0AAAAAAB7NUPOIKOLFMAEXMSMUFWP6ZBS4GIQ')
+fetch('../pets.json')
 .then(response => response.json())
 .then ((data)=> {
   //cards constructor from json 
@@ -81,7 +83,7 @@ function openModal(modalData) {
   disease.innerText = modalData.diseases;
   parasite.innerText = modalData.parasites;
 
-  modal.style.transform = 'translate(0vw)';
+  modal.style.transform = 'translate(-100vw)';
   body.style.overflow = "hidden";
 }
 
@@ -106,20 +108,30 @@ modal.addEventListener('click', (event) => closeModal(event));
 // burger menu
 const menu = document.querySelector('.burger-menu-form');
 const burger = document.querySelector('.burger');
+let menuStatus = 'close';
 
 function newMenu() {
-  menu.style.transform = 'translate(0vw)';
+  menu.style.transform = 'translate(-100vw)';
   burger.style.transform = 'rotate(90deg)';
-  body.style.overflow = "hidden"
+  body.style.overflow = "hidden";
+  menuStatus = 'open';
 }
-
-burger.addEventListener('click', newMenu);
 
 function closeMenu() {
   menu.style.transform = '';
   burger.style.transform = 'rotate(0deg)';
   body.style.overflow = "";
+  menuStatus = 'close';
 }
+
+burger.addEventListener('click',()=> {
+  if(menuStatus === 'close') {
+    newMenu()
+  }
+  else {
+    closeMenu()
+  }
+});
 
 menu.addEventListener('click', closeMenu);
 
