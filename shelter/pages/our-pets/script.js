@@ -218,12 +218,12 @@ function createSmallArr(arr) {
 
 function checkArray(data) {
   // console.log(data, window.innerWidth)
-  if(window.innerWidth >= '1279' && currentScreenSize !== 'large') {
+  if(window.innerWidth >= '1280' && currentScreenSize !== 'large') {
     currentScreenSize = 'large';
     // console.log(currentScreenSize);
     globalArray = createLargeArr(data);
     // console.log(globalArray)
-  } else if (window.innerWidth < '1279' && window.innerWidth >= '768' & currentScreenSize !== 'medium') {
+  } else if (window.innerWidth < '1280' && window.innerWidth >= '768' & currentScreenSize !== 'medium') {
     currentScreenSize = 'medium';
     // console.log(currentScreenSize)
     globalArray = createMediumArr(data);

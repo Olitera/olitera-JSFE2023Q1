@@ -31,164 +31,171 @@ for (let i = 0; i < optionCardTextArray.length; i++) {
 
 
 // cards constructor from json in slider and modal constructor
-const containerDiv = document.querySelector('.cards-container');
+const containerDiv = document.querySelectorAll('.cards-container');
 const modal = document.querySelector('.pets-modal');
 const modalInner = document.querySelector('.pets-modal-inner');
 const modalClose = document.querySelector('.modal-close');
 const arrowLeft = document.querySelector('.arrow-left');
 const arrowRight = document.querySelector('.arrow-right');
-const sliderInner = document.querySelector('.slider-inner'); 
 const slider = document.querySelector('.slider');
-const cardsOuter = document.querySelector('.cards-container-outer');
+const sliderInner = document.querySelector('.slider-inner');
+const cardsOuter = document.querySelsecond = document.querySelector('.cards-container-outer');
+const first = document.querySelectorAll('.first');
+const second = document.querySelector('.second');
 
-let sortArray;
-let count = 1;
-let columnGap = '90px';
-// let currentPosition = '0px';
-let currentPosition = 0;
-let leftPosition = 0;
-let slidesCount = 6;
+// let sortArray;
+let globalData;
 let currentArray;
 let prevArray;
-let experimentalData = Array(8).fill(0).map((el, i) => i + 1);
+let count = 1;
+let columnGap = 90;
+let currentPosition = 0;
+let leftPosition = 0;
+let slidesCount = 3;
+let experimentalData = Array(8).fill(0).map((el, i) => i);
 let isBackClicked = false;
 let isNextClicked = false;
+let currentScreenSize;
 
 const cardInner = `<div class="card-foto"></div>
 <h4 class="header-4"></h4>
 <button class="button">Learn more</button>`;
 
 fetch('../pets.json')
-.then(response => response.json())
-.then ((data)=> {
-  //cards constructor from json 
+  .then(response => response.json())
+  .then((data) => {
+    globalData = data;
+    checkArray(data);
+    currentArray = createNextArray();
+    const currentData = currentArray.map((el) => data[el]);
 
-  sortArray = data.sort(() => Math.random() - 0.5);
-  // ortArray.length = slidesCount;
-  currentArray = createNextArray();
-  console.log(currentArray);
+    containerDiv.forEach(el => {
+      createCards(currentData, el);
+    });
 
-
-  for (let i = 0; i < sortArray.length; i++) {
-    const cardElement = document.createElement('div');
-    cardElement.className = `card`;
-    cardElement.innerHTML = cardInner;
-    const textElement = cardElement.querySelector('.header-4');
-    textElement.innerHTML = sortArray[i].name;
-    const fotoElement = cardElement.querySelector('.card-foto');
-    fotoElement.style.backgroundImage = `url('${sortArray[i].img}')`;
-    containerDiv.append(cardElement);
-    cardElement.addEventListener('click', () => openModal(sortArray[i]));
-  }
-
-  cloneCard(containerDiv);
-  console.log(`${-containerDiv.clientWidth}px + ${columnGap}`);
-  leftPosition = -2070 - 90;
-  cardsOuter.style.left = `${(leftPosition)}px`;
-  // cardsOuter.style.left = `calc(${-containerDiv.clientWidth}px - ${columnGap})`;
-  
-  
-})
-
-
+    leftPosition = -cardsOuter.clientWidth - columnGap;
+    cardsOuter.style.left = `${(leftPosition)}px`;
+  })
 
 function createNextArray() {
   let arr = [];
   if (!!currentArray) {
     experimentalData.forEach(el => {
-      if (!currentArray.includes(el)){
-      arr.push(el);
+      if (!currentArray.includes(el)) {
+        arr.push(el);
       }
     });
     arr.sort(() => Math.random() - 0.5);
-    
   } else {
-    arr = experimentalData.map(el=>el).sort(() => Math.random() - 0.5);
+    arr = experimentalData.map(el => el).sort(() => Math.random() - 0.5);
   }
-  arr.length = 3;  
+  arr.length = slidesCount;
   return arr;
 }
 
+// function cloneCard(container) {
+//   const cloneItem = container.cloneNode(true);
+//   cardsOuter.appendChild(cloneItem);
+//   // const cloneItem2 = container.cloneNode(true);
+//   // container.before(cloneItem2);
+// }
 
+function createCards(dataArray, parrent) {
+  // console.log(parrent);
+  // dataArray.forEach(el => console.log(el.name));
+  parrent.innerHTML = '';
 
-
-
-
-
-
-
-
-
-
-
-
-function cloneCard(container) {
-  const cloneItem = container.cloneNode(true);
-  cardsOuter.appendChild(cloneItem);
-  // const cloneItem2 = container.cloneNode(true);
-  // container.before(cloneItem2);
+  for (let i = 0; i < dataArray.length; i++) {
+    const cardElement = document.createElement('div');
+    cardElement.className = `card`;
+    cardElement.innerHTML = cardInner;
+    const textElement = cardElement.querySelector('.header-4');
+    textElement.innerHTML = dataArray[i].name;
+    const fotoElement = cardElement.querySelector('.card-foto');
+    fotoElement.style.backgroundImage = `url('${dataArray[i].img}')`;
+    parrent.appendChild(cardElement);
+    cardElement.addEventListener('click', () => openModal(dataArray[i]));
+  }
 }
 
 function prevSlide() {
-  currentPosition = `calc(${currentPosition} + 100% + ${columnGap})`;
-  cardsOuter.style.translate = currentPosition;
-  // if (count < 2) {
-  //   count ++;
-  //   cardsOuter.style.left = `calc(${-containerDiv.clientWidth}px - ${columnGap})`;
-
-  // }
-
-console.log(isNextClicked, 'next')
-  //todo: remove
-if(!isNextClicked) {
-  prevArray = currentArray;
-  currentArray = createNextArray();
-  
-} else {
-  isNextClicked = false;
-  let state = currentArray.map(el => el);
+  if (!isNextClicked) {
+    prevArray = currentArray;
+    currentArray = createNextArray();
+  } else {
+    isNextClicked = false;
+    let state = currentArray.map(el => el);
     currentArray = prevArray.map(el => el);
     prevArray = state;
+  }
+
+  isBackClicked = true;
+  count--;
+  const currentData = currentArray.map((el) => globalData[el]);
+  const prevData = prevArray.map((el) => globalData[el]);
+
+  if (count === 0) {
+    first.forEach(el => {
+      createCards(currentData, el);
+    })
+    createCards(prevData, second)
+  }
+
+  if (count === -1) {
+    count = 1;
+    leftPosition = -currentPosition - 2 * (cardsOuter.clientWidth + columnGap);
+    cardsOuter.style.left = `${leftPosition}px`;
+    first.forEach(el => {
+      createCards(prevData, el);
+    })
+    createCards(currentData, second);
+  }
+
+  currentPosition = currentPosition + cardsOuter.clientWidth + columnGap;
+  cardsOuter.style.translate = `${currentPosition}px`;
 }
-isBackClicked = true;
-  // currentArray = createNextArray();
-  console.log(prevArray, currentArray)
+
+arrowLeft.addEventListener('click', prevSlide);
+
+function nextSlide() {
+  if (!isBackClicked) {
+    prevArray = currentArray;
+    currentArray = createNextArray();
+  } else {
+    let state = currentArray.map(el => el);
+    currentArray = prevArray.map(el => el);
+    prevArray = state;
+    isBackClicked = false;
+  }
+
+  isNextClicked = true;
+  count++;
+  const currentData = currentArray.map((el) => globalData[el]);
+  const prevData = prevArray.map((el) => globalData[el]);
+
+  if (count === 2) {
+    first.forEach(el => {
+      createCards(currentData, el);
+    })
+    createCards(prevData, second)
+  } else if (count === 3) {
+    count = 1;
+    leftPosition = -currentPosition;
+    cardsOuter.style.left = `${leftPosition}px`;
+    first.forEach(el => {
+      createCards(prevData, el);
+    })
+    createCards(currentData, second)
+  }
+
+  currentPosition = currentPosition - cardsOuter.clientWidth - columnGap;
+  cardsOuter.style.translate = `${currentPosition}px`;
 }
 
 arrowRight.addEventListener('click', nextSlide);
 
-// count = 1;
-function nextSlide() {
-  // cardsOuter.style.transform = 'translate(-100% + 90px)';
-  // currentPosition = `calc(${currentPosition} - 100% - ${columnGap})`;
-  currentPosition = currentPosition - 991 - 90;
 
-  cardsOuter.style.translate = `${currentPosition}px`;
-  count ++;
-  console.log(count);
-  if (count  === 2) {
-    count = 0;
-    leftPosition = leftPosition - currentPosition + 991 + 90;
-    cardsOuter.style.left = `${leftPosition}px`;
-    // cardsOuter.style.left = `calc(${cardsOuter.style.left} - ${currentPosition})`;
-  }
 
-//todo: remove
-if(!isBackClicked) {
-  prevArray = currentArray;
-  currentArray = createNextArray();
-
-} else {
-  let state = currentArray.map(el => el);
-  currentArray = prevArray.map(el => el);
-  prevArray = state;
-  isBackClicked = false;
-}
-isNextClicked = true;
-console.log(prevArray, currentArray)
-}
-
-arrowLeft.addEventListener('click', prevSlide);
 
 
 function openModal(modalData) {
@@ -253,8 +260,8 @@ function closeMenu() {
   menuStatus = 'close';
 }
 
-burger.addEventListener('click',()=> {
-  if(menuStatus === 'close') {
+burger.addEventListener('click', () => {
+  if (menuStatus === 'close') {
     newMenu()
   }
   else {
@@ -263,6 +270,42 @@ burger.addEventListener('click',()=> {
 });
 
 menu.addEventListener('click', closeMenu);
+
+function checkArray(data) {
+ 
+  // console.log(data, window.innerWidth)
+  if(window.innerWidth >= '1280' && currentScreenSize !== 'large') {
+    currentScreenSize = 'large';
+    slidesCount = 3;
+    columnGap = 90;
+    // console.log(currentScreenSize);
+    // globalArray = createLargeArr(data);
+    // console.log(globalArray)
+  } else if (window.innerWidth < '1280' && window.innerWidth >= '768' & currentScreenSize !== 'medium') {
+    currentScreenSize = 'medium';
+    slidesCount = 2;
+    columnGap = 40;
+    // console.log(currentScreenSize)
+    // globalArray = createMediumArr(data);
+    // console.log(globalArray)
+  } else if (window.innerWidth < '767' && currentScreenSize !== 'small') {
+    currentScreenSize = 'small';
+    slidesCount = 1;
+    columnGap = 0;
+    // console.log(currentScreenSize)
+    // globalArray = createSmallArr(data);
+    // console.log(globalArray)
+  }
+  // console.log(window.innerWidth >= '1279' && currentScreenSize !== 'large', globalArray, currentScreenSize)
+  // return globalArray;
+  leftPosition = -cardsOuter.clientWidth - columnGap;
+  cardsOuter.style.left = `${(leftPosition)}px`;
+  cardsOuter.style.translate = '';
+}
+
+window.addEventListener('resize', ()=>{
+  checkArray(globalData);
+})
 
 
 

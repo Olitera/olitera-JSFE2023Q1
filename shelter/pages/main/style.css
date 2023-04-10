@@ -449,6 +449,7 @@ main {
   flex-direction: row;
   column-gap: 90px;
   position: relative;
+  transition: translate 500ms;
 }
 
 .cards-container {
@@ -576,7 +577,7 @@ main {
   background: url("../../assets/svg/close.svg") no-repeat;
   background-position: center;
   position: absolute;
-  top: 14.9%;
+  top: 12%;
   right: 11.5%;
   cursor: pointer;
   transition: background-color 0.4s;
@@ -606,15 +607,18 @@ main {
 }
 
 .modal-foto {
-  width: 500px;
-  height: 500px;
+  width: 56%;
+  height: 100%;
+  aspect-ratio: 500/500;
   border-radius: 9px 0px 0px 9px;
+  background: no-repeat;
   background-size: contain;
+  background-position: center;
   /* background: no-repeat; */
 }
 
 .modal-text {
-  width: 401px;
+  width: 44.8%;
   /* height: 362px; */
   padding: 49px 20px 90px 31px;
   display: flex;
@@ -1051,6 +1055,14 @@ footer {
     column-gap: 7%;
   }
 
+  .cards-container-outer {
+    column-gap: 40px;
+  }
+
+  .cards-container {
+    column-gap: 40px;
+  }
+
   .card {
     width: 50%;
     padding-bottom: 5.4%;
@@ -1226,6 +1238,14 @@ footer {
 
   .slider {
     padding: 0 5%;
+  }
+
+  .cards-container-outer {
+    column-gap: 0px;
+  }
+  
+  .cards-container {
+  column-gap: 0px;
   }
 
 
