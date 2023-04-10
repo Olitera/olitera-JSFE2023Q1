@@ -447,8 +447,8 @@ main {
   background: url("../../assets/svg/close.svg") no-repeat;
   background-position: center;
   position: absolute;
-  top: 14.9%;
-  right: 11.5%;
+  top: -51px;
+  right: -41px;
   cursor: pointer;
   transition: background-color 0.4s;
 }
@@ -474,18 +474,21 @@ main {
   background: #FAFAFA;
   border-radius: 9px;
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+  position: relative;
 }
 
 .modal-foto {
-  width: 500px;
-  height: 500px;
+  width: 56%;
+  height: 100%;
+  aspect-ratio: 500/500;
   border-radius: 9px 0px 0px 9px;
+  background: no-repeat;
   background-size: contain;
-  /* background: no-repeat; */
+  background-position: center;
 }
 
 .modal-text {
-  width: 401px;
+  width: 44.8%;
   /* height: 362px; */
   padding: 49px 20px 90px 31px;
   display: flex;
@@ -788,6 +791,23 @@ footer {
   .visit {
     width: 47%;
   }
+
+  .pets-modal-inner {
+    width: 82%;
+    height: 350px;
+  }
+
+  .modal-text {
+    padding: 11px 10px 37px 9px;
+  }
+
+  .pet-description {
+    font-size: 13px;
+  }
+
+  .pet-option {
+    row-gap: 5px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -870,6 +890,33 @@ footer {
 
   .london {
     align-self: flex-start;
+  }
+
+  .pets-modal-inner {
+    width: 75%;
+    height: 341px;
+  }
+
+  .modal-close {
+    top: -53px;
+    right: -31px;
+  }
+
+  .modal-foto {
+    display: none;
+  }
+  .modal-text {
+    width: 100%;
+    padding: 8px 9px 14px 11px;
+  }
+
+  .pet-main {
+    align-items: center;
+  }
+
+  .pet-name {
+    font-size: 35px;
+
   }
 
 }
